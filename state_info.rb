@@ -16,7 +16,7 @@ end
 
 def calculate_tax(state_code, cash_spent)
   rate = @states[state_code.to_sym][:tax_rate]
-  taxes_paid = cash_spent / rate
+  taxes_paid = cash_spent * (rate / 100)
   puts "In #{state_code} you would pay #{rate}% tax on #{cash_spent}. The total taxes paid would be #{taxes_paid.round(2)}."
 end
 
@@ -26,13 +26,15 @@ def find_state_for_city(city)
     if value[:city] == city
       puts "#{city} is part of #{key}."
     end
-    }
+  }
 end
+
+
 
 describe_state('WA')
 
 
-calculate_tax('CA', 1367)
+calculate_tax('CA', 100)
 
 
 find_state_for_city('Portland')
